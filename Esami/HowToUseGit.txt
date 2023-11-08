@@ -1,0 +1,12 @@
+1 modificare il file .md da obsidian
+2 fare git add "<nome_file>.md"
+3 fare git commit -m "<commento>"
+4 fare git push
+
+!!!!!!!IMPORTANTE
+se si modifica un file da github coma bisogna fare da obsidian:
+1 fare Stage All
+2 fare commit
+3 fare pull
+
+Per modificare il file dentro la cartella ovviamente bisogna entrare nella cartella da terminale e lanciare i comandi da li
