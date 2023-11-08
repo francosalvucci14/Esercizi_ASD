@@ -1,6 +1,6 @@
 #a = [0, 1, 0, 1]
 #a = [0,1,0,0,1,1,0]
-a = [0,0,0,1]
+a = [1,1,0,1]
 
 def algoritmo(a, k):
     n = len(a)
@@ -19,12 +19,12 @@ def CreaOracolo(a):
         if a[i] == 1:
             b[i] == 0
         else:
-            b[i] += 1
+            b[i] += b[i+1]+1 #creo il vettore delle distanze
     print(b)
     return b
 
 def q(a, i):
-    return i+a[i]
+    return i+a[i]+1
 
 def CreaOracolo2(a):
     n=len(a)
@@ -33,4 +33,4 @@ def CreaOracolo2(a):
         b[i] = b[i-1]+a[i]
     print(b)
     return b
-print(algoritmo(a, 1))
+print(algoritmo(a, 0))
