@@ -1,6 +1,6 @@
 #a = [0, 1, 0, 1]
 #a = [0,1,0,0,1,1,0]
-a = [0,1,0,1]
+a = [0,0,0,1]
 
 def algoritmo(a, k):
     n = len(a)
@@ -33,4 +33,4 @@ def CreaOracolo2(a):
         b[i] = b[i-1]+a[i]
     print(b)
     return b
-print(algoritmo(a, 0))
+print(algoritmo(a, 1))
