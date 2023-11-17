@@ -18,6 +18,7 @@ class Queue:
 
     def size(self):
         return len(self.items)
+
 def BFS(root):
     c = Queue()
     c.enqueue(root)
