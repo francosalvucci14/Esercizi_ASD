@@ -12,5 +12,5 @@ def InsertionSort(a):
 
 a = [8,4,6,3,1,1,5,2,4,8,6,2,0,4,7,9]
 a_s = InsertionSort(a)
-#print(len(a_s))
+print(len(a_s))
 print(a_s)
