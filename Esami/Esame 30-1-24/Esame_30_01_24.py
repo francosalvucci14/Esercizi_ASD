@@ -6,7 +6,8 @@ def build_structure(A):
     for i in range(1, n + 1):
         prefisso_uni[i] = prefisso_uni[i - 1] + A[i - 1]
         prefisso_zeri[i] = prefisso_zeri[i - 1] + (1 - A[i - 1])
-
+    print(prefisso_uni)
+    print(prefisso_zeri)
     return prefisso_uni, prefisso_zeri
 
 
@@ -27,9 +28,11 @@ def query(prefisso_uni, prefisso_zeri, i, j, n):
     return differenza_modulo
 
 
+
 # Esempio di utilizzo
-vettore_A = [1, 0, 1, 1, 0, 1, 0, 0, 1]
+# vettore_A = [1, 0, 1, 1, 0, 1, 0, 0, 1]
+vettore_A = [0, 0, 1, 0, 1, 1, 1, 0]
 n = len(vettore_A)
 prefisso_uni, prefisso_zeri = build_structure(vettore_A)
-risultato_query = query(prefisso_uni, prefisso_zeri, 0, n, n)
+risultato_query = query(prefisso_uni, prefisso_zeri, 0, 5, n)
 print(risultato_query)
