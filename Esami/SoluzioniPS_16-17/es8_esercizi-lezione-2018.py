@@ -17,7 +17,7 @@ def maggioranza(V, start, end):
     for i in range(n):
         if x1 == V[i]:
             n1 += 1
-        elif x2 == V[i]:
+        if x2 == V[i]:
             n2 += 1
 
     # Restituisci l'elemento di maggioranza basato sul conteggio delle occorrenze
@@ -25,14 +25,6 @@ def maggioranza(V, start, end):
         return x1
     else:
         return x2
-
-
-def count_occurrences(V, element, j):
-    count = 0
-    if V[element] == V[j]:
-        count += 1
-    return count
-
 
 def maggioranza_lineare(a):
     score = 0
@@ -57,8 +49,10 @@ def q(a, i, j):
 
 
 # Esempio di utilizzo
-V = [2, 4, 4, 4, 4, 7, 4, 2, 2]
+#V = [2, 4, 4, 4, 4, 7, 4, 2, 2]
+V = [2,3,0,1,4,4,2,3,3,3,4]
 n = len(V)
+
 majority_element = maggioranza(V, 0, n - 1)
 print("Elemento di maggioranza:(tempo O(nlog(n)))", majority_element)
 # a = [1,5,6,7,1,4,6,8]
