@@ -35,22 +35,25 @@ def Jaccar(a, b):
 
     while i < (n_a) and j < (n_b):
         if a[i] == b[j]:
+            
             inter += 1
             i += 1
             j += 1
         elif a[i] < b[j]:
+            
             i += 1
         else:
+            
             j += 1
     union = n_a + n_b - inter
     print(inter,union)
     return inter / union
 
 
-#a = [0, 2, 4, 5, 5, 5, 1]
-#b = [5, 4, 2, 2]
+a = [0, 2, 4, 5, 5, 5]
+b = [5, 4, 2, 2]
 
-a = [0, 4, 2, 5, 2]  # Insieme con elementi duplicati
-b = [1, 4, 2, 5, 5]  # Insieme con elementi duplicati
+#a = [0, 4, 2, 5, 2]  # Insieme con elementi duplicati
+#b = [1, 4, 2, 5, 5]  # Insieme con elementi duplicati
 
 print(Jaccar(a,b))
