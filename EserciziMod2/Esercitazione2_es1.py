@@ -20,9 +20,9 @@ def calculate_optimal_value_with_solution(L, G):
             # if G[j - k] + Opt[k][0] > max_value:
             #     max_value = G[j - k] + Opt[k][0]
             #     optimal_indices = Opt[k][1] + [j - k]
-            max_value = max(max_value,G[j-k]+Opt[k][0])
-            if max_value == G[j-k]+Opt[k][0]:
-                optimal_indices = Opt[k][1]+[j-k]
+            max_value = max(max_value, G[j - k] + Opt[k][0])
+            if max_value == G[j - k] + Opt[k][0]:
+                optimal_indices = Opt[k][1] + [j - k]
         Opt[j] = (max_value, optimal_indices)
 
     print(Opt)
@@ -30,17 +30,9 @@ def calculate_optimal_value_with_solution(L, G):
     return Opt[L]
 
 
-L = 7  # Lunghezza dell'array
-G = [
-    0,
-    6,
-    10,
-    20,
-    21,
-    25,
-    28,
-    30,
-]  # Valori associati agli indici (G[0] è solo un segnaposto)
+L = 5  # Lunghezza dell'array
+G = [0, 6, 10, 20, 21, 25]  # Valori associati agli indici (G[0] è solo un segnaposto)
 sol_ottima, soluzione = calculate_optimal_value_with_solution(L, G)
-print("Risultato ottimale:", sol_ottima)
-print("Soluzione:", soluzione)
+print(f"Array (G) di partenza: {G}")
+print("Valore della soluzione ottimale:", sol_ottima)
+print("Soluzione effettiva (elementi dell'array da prendere):", soluzione)
