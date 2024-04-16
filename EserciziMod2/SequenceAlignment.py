@@ -38,7 +38,7 @@ def SeqAlAlpha1(m, n, X, Y, delta, alpha):
                 delta + M[i - 1][j],
                 delta + M[i][j - 1],
             )
-
+    print(M)
     return M[n][m]
 
 

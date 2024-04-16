@@ -4,6 +4,7 @@
 # Class to represent a graph
 from colorama import Fore, Style
 
+
 class Graph:
     def __init__(self, vertices):
         self.V = vertices  # No. of vertices
@@ -46,7 +47,12 @@ class Graph:
 
         for u, v, w in self.graph:
             if dist[u] != float("Inf") and dist[u] + w < dist[v]:
-                print(Fore.RED + "[Error] "+ Style.RESET_ALL+"Graph contains negative weight cycle")
+                print(
+                    Fore.RED
+                    + "[Error] "
+                    + Style.RESET_ALL
+                    + "Graph contains negative weight cycle"
+                )
                 return
 
         # print all distance
@@ -57,16 +63,22 @@ class Graph:
 if __name__ == "__main__":
     # x = int(input("Number of nodes : "))
     y = int(input("Choose Source Vertex : "))
-    if y > 5: #in this case 5 is a costant, but here we put n = number of nodes
-        print(Fore.RED+"[Error] "+Style.RESET_ALL+"in input source vertex")
+    if y > 5:  # in this case 5 is a costant, but here we put n = number of nodes
+        print(Fore.RED + "[Error] " + Style.RESET_ALL + "in input source vertex")
         exit()
     g = Graph(5)
-    
+
     print(
-        Fore.GREEN + "[Info] " +Style.RESET_ALL+"Nota bene, il grafo  che verrà analizzato è quello delle slide di Guala, solo con gli archi invertiti"
+        Fore.GREEN
+        + "[Info] "
+        + Style.RESET_ALL
+        + "Nota bene, il grafo che verrà analizzato è quello delle slide di Guala, solo con gli archi invertiti"
     )
     print(
-        Fore.GREEN + "[Info] " +Style.RESET_ALL+"Questo algoritmo considera anche i cicli negativi"
+        Fore.GREEN
+        + "[Info] "
+        + Style.RESET_ALL
+        + "Questo algoritmo considera anche i cicli negativi"
     )
     g.addEdge(0, 3, -1)
     g.addEdge(0, 2, 4)
