@@ -13,7 +13,8 @@ def IP(lectures: list) -> list:
                 break
         if not room_found:
             d.append([lect])  # se non ci sono classrooms disponibili, ne creo una nuova
-
+    dn = len(d)
+    print(f"Il numero di classi usate è {dn}")
     return d
 
 
@@ -29,4 +30,8 @@ lect = [
     (12, 15, "I"),
     (12, 15, "J"),
 ]
-print(IP(lect))
+classi = IP(lect)
+n = len(classi)
+print("I job vengono schedulati con queste classi:\n")
+for i in range(n):
+    print(i + 1, classi[i])
