@@ -1,4 +1,6 @@
 from collections import defaultdict
+from colorama import Fore, Style
+import pprint as pp
 
 
 class Graph:
@@ -60,5 +62,9 @@ graph = [
 g = Graph(graph)
 source = 0
 sink = 5
-print("Algoritmo Ford-Fulkerson")
-print("Il flusso massimo è: %d " % g.ford_fulkerson(source, sink))
+
+print(Fore.GREEN + "[INFO] " + Style.RESET_ALL + "Algoritmo Ford-Fulkerson")
+print(
+    Fore.GREEN + "[INFO] " + Style.RESET_ALL + "Il grafo è quello delle slide di Guala"
+)
+print("Il valore del max flow è: %d " % g.ford_fulkerson(source, sink))

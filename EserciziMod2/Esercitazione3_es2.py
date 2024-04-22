@@ -1,6 +1,6 @@
 def scaffali(a: list) -> int:
     """
-    Problema simile alll scheduling dei processi
+    Problema simile allo scheduling dei processi
     """
     n = len(a)
     M = [[0] * n for _ in range(n)]

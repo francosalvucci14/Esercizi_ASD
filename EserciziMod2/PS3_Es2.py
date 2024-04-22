@@ -1,27 +1,32 @@
-def max_score(n, scores):
-    # Inizializzazione della matrice dp
-    dp = [[0] * n for _ in range(3)]
+def max_score(scores):
+    n = len(scores[0])
+    if n == 0:
+        return 0
 
-    # Riempimento della matrice dp
-    for j in range(n):
-        # Caso base per la prima riga
-        if j == 0:
-            dp[0][j] = scores[0][j]
-        else:
-            dp[0][j] = scores[0][j] + max(dp[1][j - 1], dp[2][j - 1])
+    # Inizializzazione dei primi tre valori
+    dp = [0] * n
+    dp[0] = max(scores[0][0], scores[1][0])
+    if n > 1:
+        dp[1] = max(dp[0], max(scores[0][1], scores[1][1]))
+    if n > 2:
+        dp[2] = max(dp[1], max(scores[0][2] + dp[0], scores[1][2] + dp[0]))
 
-        # Calcolo dei massimi punteggi per le righe successive
-        for i in range(1, 3):
-            dp[i][j] = scores[i][j] + max(dp[k][j] for k in range(3) if k != i)
+    # Calcolo dei massimi punteggi per ogni colonna
+    for j in range(3, n):
+        # Massimo punteggio scegliendo di posizionare una pedina nella colonna j
+        max_score_j = max(
+            scores[0][j] + max(dp[j - 2], dp[j - 3]),
+            scores[1][j] + max(dp[j - 2], dp[j - 3]),
+        )
+        dp[j] = max(dp[j - 1], max_score_j)
 
-    # Restituzione del massimo punteggio ottenibile
-    return max(max(dp[0]), max(dp[1]), max(dp[2]))
+    return dp[-1]
+
 
 # Esempio di utilizzo
-board = [
+scores = [
     [3, 10, 10, 15, 6, 5, 30, 2, 1],
     [7, 2, 10, 1, 1, 2, 1, 3, 1000],
     [1, 5, 8, 12, 30, 6, 30, 4, 1],
 ]
-n = len(board[0])
-print(max_score(n, board))  # Output: 1139
+print(max_score(scores))  # Output atteso: 1139
