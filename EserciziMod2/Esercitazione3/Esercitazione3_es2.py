@@ -20,10 +20,10 @@ def scaffali_memoization(i: int, w: int, a: list, cache: dict) -> int:
     return cache[i, w]
 
 
-def find_minimum_W(n: int, a: list, W: int) -> int:
+def find_minimum_W(n: int, a: list) -> int:
     cache = dict()
     max_W = sum(a)
-    for W in range(W, max_W + 1):
+    for W in range(max_W + 1):
         if scaffali_memoization(n, W, a, cache) <= W:
             return W
 
@@ -34,5 +34,5 @@ w = 0
 n = len(input)
 print(Fore.GREEN + "[INFO] " + Style.RESET_ALL + f"Istanza del problema : {input}")
 print(
-    "Soluzione ottima con memoization:" + Fore.RED + f" W = {find_minimum_W(n,input,w)}"
+    "Soluzione ottima con memoization:" + Fore.RED + f" W = {find_minimum_W(n,input)}"
 )
