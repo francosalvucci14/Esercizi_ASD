@@ -63,7 +63,12 @@ g = Graph(graph)
 source = 0
 sink = 5
 
-print(Fore.GREEN + "[INFO] " + Style.RESET_ALL + "Algoritmo Ford-Fulkerson")
+print(
+    Fore.GREEN
+    + "[INFO] "
+    + Style.RESET_ALL
+    + "Algoritmo Ford-Fulkerson con variante Shortest-Augmenting-Path"
+)
 print(
     Fore.GREEN + "[INFO] " + Style.RESET_ALL + "Il grafo è quello delle slide di Guala"
 )

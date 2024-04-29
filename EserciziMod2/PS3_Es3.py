@@ -13,9 +13,9 @@ def print_tree(root, level=0, prefix="Root: "):
     if root is not None:
         print(" " * (level * 4) + prefix + str(root.val))
         if root.left is not None or root.right is not None:
-            if root.right is not None:
-                print_tree(root.left, level + 1, "L--- ")
             if root.left is not None:
+                print_tree(root.left, level + 1, "L--- ")
+            if root.right is not None:
                 print_tree(root.right, level + 1, "R--- ")
 
 
@@ -76,6 +76,7 @@ def min_cost_tree(c):
                 total_cost = left_cost + right_cost + internal_node_cost
                 min_cost = min(min_cost, total_cost)
             memo[i][j] = min_cost
+            pp.pprint(memo)
         return memo[i][j]
 
     # Chiamata iniziale alla funzione di programmazione dinamica
@@ -86,8 +87,11 @@ def min_cost_tree(c):
 # Esempio di utilizzo
 # c = [1, 3, 4, 3, 2]
 # c = [3, 2, 4, 5, 9]
-c = [4, 2, 9, 1, 2, 3, 10, 7]
+# c = [4, 2, 9, 1, 2, 3, 10, 7]
+# c = [8, 1, 3, 7, 5, 2, 9
+# c = [4, 2, 9, 7, 1, 3, 2]
 # c = [3, 4, 5, 1, 7, 9]
+c = [1, 3, 2]
 print("Istanza: ", c)
 costo, opt = min_cost_tree(c)
 print("Il costo minimo dell'albero binario è:", costo)

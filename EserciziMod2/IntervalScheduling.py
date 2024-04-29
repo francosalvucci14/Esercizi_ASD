@@ -1,4 +1,4 @@
-def IS(intervals:list)->list:
+def IS(intervals: list) -> list:
 
     # sorting the intervals
     intervals.sort(key=lambda x: x[2])
@@ -24,7 +24,18 @@ def IS(intervals:list)->list:
             answer.append(interval)
     return answer
 
-intervals = [("B",1,4), ("C",3,5), ("A",0,6), ("E",4,7), ("D",3,8), ("F",5,9), ("G",6,10), ("H",8,11)]
 
+help(IS)
+intervals = [
+    ("B", 1, 4),
+    ("C", 3, 5),
+    ("A", 0, 6),
+    ("E", 4, 7),
+    ("D", 3, 8),
+    ("F", 5, 9),
+    ("G", 6, 10),
+    ("H", 8, 11),
+]
+print("Interval i = (Name,StartingTime,FinishTime)")
 answer = IS(intervals)
 print(f"Scheduled intervals : {answer}")

@@ -18,6 +18,7 @@ def IP(lectures: list) -> list:
     return d
 
 
+help(IP)
 lect = [
     (0, 3, "A"),
     (0, 7, "B"),
