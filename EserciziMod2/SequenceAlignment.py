@@ -47,8 +47,7 @@ Y = [("P", 14), ("A", 1), ("L", 10), ("A", 1), ("T", 18), ("E", 5)]
 delta = 2
 m = len(Y)
 n = len(X)
-print("Scegli l'alpha [1 = alpha costante][2 = alpha matrice]: ")
-x = input()
+x = input("Scegli l'alpha [1 = alpha costante][2 = alpha matrice]: ")
 if x == "1":
     alpha = 1
     print(f"Soluzione ottima :\n {SeqAlAlpha1(m, n, X, Y, delta, alpha)}")

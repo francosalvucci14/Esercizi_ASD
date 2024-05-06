@@ -18,6 +18,27 @@ def Ascensore(p: list, C: int) -> int:
     return OPT[n - 1][C - 1]
 
 
+def Ascensore_memo(p: list, c: int, i: int, C: int, cache: dict = dict()) -> int:
+    n = len(p)
+    if (i, c) in cache:
+        return cache[i, c]
+
+    if c >= p[0]:
+        cache[i, c] = 1
+    else:
+        cache[i, c] = 0
+
+    if c <= C and c >= p[i]:
+        cache[i, c] = max(
+            Ascensore_memo(p, c, i - 1, C, cache),
+            Ascensore_memo(p, c - p[i], i - 1, cache) + 1,
+        )
+    else:
+        cache[i, c] = Ascensore_memo(p, c, i - 1, C, cache)
+
+    return cache[i, c]
+
+
 p = [
     10,
     5,
@@ -26,3 +47,6 @@ p = [
 ]
 C = 25
 print(Ascensore(p, C))
+cache = dict()
+n = len(p)
+print(Ascensore_memo(p, 0, n, C, cache))

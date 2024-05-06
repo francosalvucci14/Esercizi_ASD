@@ -19,7 +19,7 @@ def min_cost_traversal(costs, n, k):
 
 
 # Esempio di utilizzo
-costs = [[1, 2], [5, 4], [5, 6], [2, 10]]  # Costi dei viaggi
+costs = [[1, 2], [5, 4], [5, 6], [20, 10]]  # Costi dei viaggi
 n = len(costs)  # Numero di viaggi
 k = 3  # Numero di cambi modalità disponibili
 print("Istanza:")
