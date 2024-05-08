@@ -24,4 +24,4 @@ def Punteggio(p: list, t: list, T: int) -> int:
 p = [5, 10, 2, 3]
 t = [5, 24, 10, 26]
 T = 25
-__import__("pprint").pprint(Punteggio(p, t, T))
+print(f"Punteggio massimo ottenibile nel tempo T={T}: ", Punteggio(p, t, T))

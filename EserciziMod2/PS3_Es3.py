@@ -19,7 +19,7 @@ def draw_tree(ax, node, x, y, dx, dy):
     if node.left or node.right:
         color = "blue"  # Nodo interno
     else:
-        color = "black"  # Nodo foglia
+        color = "grey"  # Nodo foglia
     ax.text(x, y - 0.3, str(node.val), fontsize=12, ha="center", va="center")
 
     circle = plt.Circle((x, y), 0.05, color=color, fill=True)

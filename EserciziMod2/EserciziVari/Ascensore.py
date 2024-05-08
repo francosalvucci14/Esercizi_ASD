@@ -46,7 +46,12 @@ p = [
     10,
 ]
 C = 25
-print(Ascensore(p, C))
+print(
+    "N.oggetti max:", Ascensore(p, C + 1)
+)  # C+1 se vogliamo il numero di oggetti da poter mettere entro la capienza C (capienza compresa <=C)
+print(
+    "N.oggetti max:", Ascensore(p, C)
+)  # se vogliamo il numero di oggetti entro la capienza (capienza non compresa < C)
 cache = dict()
 n = len(p)
-print(Ascensore_memo(p, 0, n, C, cache))
+# print(Ascensore_memo(p, 0, n, C, cache))

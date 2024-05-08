@@ -63,7 +63,7 @@ n = int(input("Scegli la dimensione della scacchiera: "))
 print(f"Numero di cammini possibili in una scacchiera {n}x{n} : ", Scacchiera(n))
 
 score = np.random.randint(1, 500, (n, n))
-pp.pprint(score)
+print("Scacchiera random:\n", score)
 # score = [[3, 10, 10, 15, 6, 5, 30, 2, 1], [7, 2, 10, 1, 1, 2, 1, 3, 1000]]
 OPT, cammino = ValoreCamminoScacchiera_ConRicostruzioneCammino(score)
 print("Valore del cammino massimo:", OPT)
