@@ -25,7 +25,7 @@ def IS(intervals: list) -> list:
     return answer
 
 
-help(IS)
+# help(IS)
 intervals = [
     ("B", 1, 4),
     ("C", 3, 5),
@@ -36,6 +36,7 @@ intervals = [
     ("G", 6, 10),
     ("H", 8, 11),
 ]
+print("Intervals {}".format(intervals))
 print("Interval i = (Name,StartingTime,FinishTime)")
 answer = IS(intervals)
 print(f"Scheduled intervals : {answer}")
