@@ -19,20 +19,20 @@ def Batterie(D: list, C: list, n: int, r: int) -> int:
     OPT[n] = 0
     if r < D[0]:
         return f"Non si può cambiare batteria, in quanto i km di autonomia (ovvero r={r}) sono minoro della distanza dal km 0 al km {D[0]}"
-    if r>max(D):
+    if r > max(D):
         return 0
-    for i in range(n-1, -1, -1):
+    for i in range(n - 1, -1, -1):
         j = i
         OPT[i] = float("inf")
         while j <= n and (D[j - 1] <= D[i - 1] + r):
             OPT[i] = min(OPT[i], OPT[j])
             j = j + 1
-        OPT[i] = OPT[i] + C[i-1]
+        OPT[i] = OPT[i] + C[i - 1]
     print(OPT)
     return OPT[0]
 
 
-D = [20, 40, 60]  
+D = [20, 40, 60]
 C = [10, 15, 20]
 n = len(D)
 r = 50

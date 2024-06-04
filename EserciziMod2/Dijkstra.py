@@ -1,5 +1,6 @@
 import heapq
-from colorama import Fore,Style
+from colorama import Fore, Style
+
 
 class Graph:
     def __init__(self, vertices):
@@ -138,14 +139,32 @@ if __name__ == "__main__":
     # print(Fore.GREEN+"[INFO] "+Style.RESET_ALL+"Algoritmo di Dijkstra con sorgente {} verso tutti i nodi".format(src))
     # for i in range(len(distances)):
     #     print("Da sorgente",src,"Al Nodo", i, "-> Distanza:", distances[i])
-    
+
     # Esegui l'algoritmo di Dijkstra per la sorgente (ad esempio, il nodo 0) al nodo pozzo (indice 50)
-    src = 0
+
+    # src = 49
+    src = int(input("Scegli nodo sorgente [0-49]: "))
     distances = g.dijkstra(src)
-    sink = 4
-    print(Fore.GREEN+"[INFO] "+Style.RESET_ALL+"Algoritmo di Dijkstra con sorgente {} e pozzo {}".format(src,sink))
+    sink = int(input("Scegli nodo pozzo [0-49]: "))
+    print(
+        Fore.GREEN
+        + "[INFO] "
+        + Style.RESET_ALL
+        + "Algoritmo di Dijkstra con sorgente {} e pozzo {}".format(src, sink)
+    )
     if sink == 50:
-        print("Distanza minima da nodo", src, "a nodo pozzo", sink, ": "+Fore.RED+"{}".format(distances[sink-1]))
+        print(
+            "Distanza minima da nodo",
+            src,
+            "a nodo pozzo",
+            sink,
+            ": " + Fore.RED + "{}".format(distances[sink - 1]),
+        )
     else:
-        print("Distanza minima da nodo", src, "a nodo pozzo", sink, ": "+Fore.RED+"{}".format(distances[sink]))
-    
+        print(
+            "Distanza minima da nodo",
+            src,
+            "a nodo pozzo",
+            sink,
+            ": " + Fore.RED + "{}".format(distances[sink]),
+        )

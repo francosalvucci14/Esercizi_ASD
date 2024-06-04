@@ -1,24 +1,72 @@
-def max_score_with_skip(colors):
-    n = len(colors)
+def max_score_with_pieces(n, b, g, n_score):
     if n == 0:
-        return 0
-    elif n == 1:
-        return max(colors[0])  # Se c'è solo una pedina, restituisce il massimo dei suoi punteggi
-    
-    DP = [0] * (n + 1)  # Inizializzazione del vettore dei punteggi dinamici
-    DP[1] = colors[0][0]  # Il punteggio per la prima posizione
-    
-    for i in range(2, n + 1):
-        # Calcola il punteggio massimo fino alla posizione i
-        DP[i] = max(
-            DP[i-1] + colors[i-1][0],  # Piazzando una pedina bianca
-            DP[i-2] + colors[i-1][1],  # Piazzando una pedina grigia
-            DP[i-3] + colors[i-1][2],  # Piazzando una pedina nera
-            DP[i-1] if i > 1 else 0  # Saltando la colonna corrente se possibile
-        )
+        return 0, []
 
-    return DP[n]
+    # Initialize DP arrays
+    dp = [[float('-inf')] * 3 for _ in range(n)]
+    prev = [[-1] * 3 for _ in range(n)]
+    dp[0][0] = b  # The first piece must be white
+    dp[0][1] = float('-inf')  # Invalid state
+    dp[0][2] = float('-inf')  # Invalid state
 
-# Esempio di utilizzo:
-colors = [(3, 7, 1), (2, 1, 5), (5, 3, 2), (4, 6, 8)]  # Esempio di colori
-print("Massimo punteggio ottenibile con possibilità di saltare una colonna:", max_score_with_skip(colors))
+    for i in range(1, n):
+        # If we place a white piece at position i
+        dp[i][0] = b
+        prev[i][0] = -1
+
+        # If we place a gray piece at position i
+        if dp[i-1][0] != float('-inf'):
+            dp[i][1] = dp[i-1][0] + g
+            prev[i][1] = 0
+        else:
+            dp[i][1] = g
+            prev[i][1] = -1
+
+        # If we place a black piece at position i
+        if dp[i-1][1] != float('-inf') and dp[i-1][0] != float('-inf'):
+            if dp[i-1][1] + n_score > dp[i-1][0] + n_score:
+                dp[i][2] = dp[i-1][1] + n_score
+                prev[i][2] = 1
+            else:
+                dp[i][2] = dp[i-1][0] + n_score
+                prev[i][2] = 0
+        elif dp[i-1][1] != float('-inf'):
+            dp[i][2] = dp[i-1][1] + n_score
+            prev[i][2] = 1
+        elif dp[i-1][0] != float('-inf'):
+            dp[i][2] = dp[i-1][0] + n_score
+            prev[i][2] = 0
+        else:
+            dp[i][2] = n_score
+            prev[i][2] = -1
+
+    # Maximum score at the end of the board
+    max_score = max(dp[n-1][0], dp[n-1][1], dp[n-1][2])
+    final_choice = dp[n-1].index(max_score)
+
+    # Recover the sequence of pieces
+    sequence = []
+    i = n - 1
+    while i >= 0:
+        if final_choice == 0:
+            sequence.append('bianco')
+        elif final_choice == 1:
+            sequence.append('grigio')
+        else:
+            sequence.append('nero')
+        
+        final_choice = prev[i][final_choice]
+        i -= 1
+
+    sequence.reverse()  # Reverse the sequence to get the correct order
+
+    return max_score, sequence
+
+# Example usage:
+n = 5
+b = 1
+g = 2
+n_score = 3
+score, sequence = max_score_with_pieces(n, b, g, n_score)
+print("Max Score:", score)
+print("Sequence of Pieces:", sequence)
