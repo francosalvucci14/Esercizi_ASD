@@ -17,7 +17,7 @@ def Knapsack(n, W, pesi, valori):
     return M[n - 1, W]
 
 
-W = 11
+W = 7
 pesi = [1, 2, 5, 6, 7]
 valori = [1, 6, 18, 22, 28]
 n = len(pesi)

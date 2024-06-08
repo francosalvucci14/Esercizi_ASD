@@ -1,61 +1,39 @@
-# Stampa Matrice
-def printMatrix(M):
-    # Trova il numero massimo di cifre in ciascun elemento della matrice
-    max_length_per_column = [len(str(max(col, key=abs))) for col in zip(*M)]
+def bocciati(f, m, d):
+    n = len(f)
+    print(n)
 
-    for row in M:
-        for col, element in enumerate(row):
-            padding = max_length_per_column[col] - len(str(element))
-            left_padding = padding // 2
-            right_padding = padding - left_padding
-            print(" " * left_padding + str(element) + " " * right_padding, end="  ")
-        print()
-    print()
+    OPT = [-1] * (n + 4)
+    print(OPT)
+    OPT[n + 3] = OPT[n + 2] = OPT[n+1] = OPT[n]= 0
+    print(OPT)
 
+    f = f + [0] * 4
+    d = d + [0] * 4
+    m = m + [0] * 4
 
-def massimo_guadagno1(n, ai, bi):
-    if n == 0:
-        return 0
-    elif n == 1:
-        return max(ai[0], bi[0])
+    print(f)
+    for i in range(n-1, -1, -1):
+        OPT[i] = max(
+            f[i] + OPT[i + 1],
+            m[i] + f[i + 1] + OPT[i + 2],
+            d[i] + f[i + 1] + f[i + 2] + f[i + 3] + OPT[i + 4],
+        )
+    print(OPT)
 
-    # Inizializzazione delle tabelle dp
-    dp = [0] * n
+    # Print solution
 
-    # Inizializzazione dei casi base
-    dp[0] = max(ai[0], bi[0])
-    if n > 1:
-        dp[1] = max(ai[0] + ai[1], bi[1])
-
-    # Riempimento della tabella dp
-    for i in range(2, n):
-        dp[i] = max(dp[i - 1], dp[i - 1] + ai[i])
-        if i >= 2:
-            dp[i] = max(dp[i], dp[i - 2] + bi[i])
-        if i >= 3:
-            dp[i] = max(dp[i], dp[i - 3] + bi[i])
-
-    # Il massimo guadagno sarà dp[n-1]
-    return dp[n - 1]
+    # for i in range(no - 2, -1,- 1):
+    #     if OPT[i] == f[i] + OPT[i + 1]:
+    #         print("Esame facile")
+    #     elif OPT[i] == m[i] + f[i + 1] + OPT[i + 2]:
+    #         print("Esame medio")
+    #     else:
+    #         print("Esame difficile")
+    return OPT[0]
 
 
-def massimo_guadagno(n, ai, bi):
-    OPT = [[0] * 2 for _ in range(n)]
+f = [2, 4, 1, 3, 5, 2, 2, 3, 4, 1]
+m = [5, 6, 5, 4, 7, 4, 4, 6, 7, 3]
+d = [10, 8, 10, 6, 9, 9, 6, 7, 8, 8]
 
-    OPT[0][0] = 0
-    OPT[0][1] = 0
-
-    for i in range(1, n):
-        OPT[i][0] = max(ai[i] + OPT[i - 1][1], OPT[i - 2][0] + bi[i])
-        OPT[i][1] = max(ai[i] + OPT[i - 1][1], OPT[i - 3][0] + bi[i - 1])
-    printMatrix(OPT)
-    return max(OPT[n - 1][0], OPT[n - 1][1])
-
-
-a = [10, 20, 30, 40, 50]
-b = [15, 25, 35, 45, 55]
-n = len(a)
-totale = massimo_guadagno(n, a, b)
-print(totale)
-
-print(massimo_guadagno1(n, a, b))
+print(bocciati(f, m, d))
